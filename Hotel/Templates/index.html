@@ -15,9 +15,11 @@
              <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{% url 'rooms'%}">Список комнат</a>
               </li>
+              {% if ApplicationAmount > 0 %}
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="">Список заявок</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'applications'%}">Список заявок</a>
               </li>
+              {% endif %}
             </ul>
           </div>
         </div>
@@ -30,7 +32,6 @@
         <p>Количество клиентов - {{ ClientAmount }}</p>
         <p>Количество заявок - {{ ApplicationAmount }}</p>
         <a href="{% url 'rooms'%}" class="btn btn-primary">Список комнат</a>
-        <a href="" class="btn btn-primary mt-3">Оставить заявку</a>
       </div>
     </div>
 

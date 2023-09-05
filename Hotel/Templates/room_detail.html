@@ -15,9 +15,11 @@
              <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{% url 'rooms'%}">Список комнат</a>
               </li>
+              {% if ApplicationAmount > 0 %}
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="">Список заявок</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'applications'%}">Список заявок</a>
               </li>
+              {% endif %}
             </ul>
           </div>
         </div>
@@ -29,6 +31,7 @@
         <div class="rounded-3 ms-3 d-flex flex-column justify-content-center align-items-center" style="width: 300px; background-color: rgb(57, 57, 57); height: 300px; color: white;">
             <p>Название - {{room.title}}</p>
             <p>Цена - {{room.price}}</p>
+            <p>Категория - {{room.get_category_display}}</p>
             <a href="{% url 'reservation' room.slug %}" class="btn btn-primary">Забронировать</a>
             <form method="post">
                 {% csrf_token %}

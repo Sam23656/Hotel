@@ -17,12 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from Hotel_Client.views import show_index_page, ShowRoomsPage, ShowRoomDetailPage, show_reservation_page
+from Hotel_Client.views import show_index_page, ShowRoomsPage, ShowRoomDetailPage, show_reservation_page, ShowAplicationsPage, delete_application
 
 urlpatterns = [
     path('', show_index_page, name='index'),
     path('rooms/', ShowRoomsPage.as_view(), name='rooms'),
     path('room_detail/<slug:slug>/', ShowRoomDetailPage.as_view(), name='room_detail'),
     path('reservation/<slug:slug>/', show_reservation_page, name='reservation'),
+    path('applications/', ShowAplicationsPage.as_view(),name='applications'),
+    path('delete_application/<int:pk>/', delete_application, name='delete_application'),
     path('admin/', admin.site.urls),
 ]

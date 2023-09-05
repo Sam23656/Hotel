@@ -15,6 +15,8 @@ class Service(models.Model):
 class Rooms(models.Model):
     id = models.IntegerField(primary_key=True)
     title = models.CharField(max_length=50)
+    categorys = (("cheap", "дешевый"), ("middle", "средний"), ("expensive", "дорогой"))
+    category = models.CharField(choices=categorys, max_length=50, null=True)
     slug = models.SlugField()
     price = models.PositiveIntegerField()
     reserved = models.BooleanField(default=False)
@@ -27,7 +29,7 @@ class Rooms(models.Model):
 
 class RoomApplication(models.Model):
     id = models.IntegerField(primary_key=True)
-    client_id = models.OneToOneField(Client, on_delete=models.CASCADE)
+    client_id = models.ForeignKey(Client, on_delete=models.CASCADE)
     room_id = models.OneToOneField(Rooms, on_delete=models.CASCADE)
     services = models.ManyToManyField(Service)
     start_time = models.DateField()
