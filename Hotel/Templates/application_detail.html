@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body class="bg-dark text-white">
+    <div class="cover-container d-flex w-100 h-100  mx-auto flex-column">
+    <nav style="width: 100%;" class="navbar navbar-expand navbar-dark bg-dark" aria-label="Second navbar example">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'index_admin'%}" >Hotel</a>
+          <div class="collapse navbar-collapse">
+            <ul class="navbar-nav me-auto">
+             <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'rooms_admin'%}">Список комнат</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'add_room'%}">Добавить комнату</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'admin_applications' %}">Список заявок</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div class="d-flex flex-wrap justify-content-center align-items-center mb-3 mt-5">
+        <div class="rounded-3 ms-3 d-flex flex-column justify-content-center align-items-center" style="width: 300px; background-color: rgb(57, 57, 57); height: 400px; color: white;">
+            <p>Id - {{application.id}}</p>
+            <p>Имя - {{Client.first_name}}</p>
+            <p>Фамилия - {{Client.last_name}}</p>
+            <p>Отчество - {{Client.middle_name}}</p>
+            <p>Email - {{Client.email}}</p>
+            <p>Комната - {{Room.title}} </p>
+            <a href="{% url 'change_status_true' application.id %}" class="btn btn-primary mt-3">Принять</a>
+            <a href="{% url 'change_status_false' application.id %}" class="btn btn-primary mt-3">Отклонить</a>
+        </div>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>

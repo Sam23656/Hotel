@@ -31,9 +31,10 @@
       <meta http-equiv="refresh" content="0; URL={% url 'rooms' %}">
       {% endif %}
         {% for application in applications %}
-        <div class="rounded-3 ms-3 d-flex flex-column justify-content-center align-items-center" style="width: 200px; background-color: rgb(57, 57, 57); height: 200px; color: white;">
+        <div class="rounded-3 ms-3 d-flex flex-column justify-content-center align-items-center {% if application.get_approve_status_display == 'Принята' %}bg-danger{% else %}bg-success{% endif %}" style="width: 200px; background-color: rgb(57, 57, 57); height: 200px; color: white;">
             <p>Id - {{application.id}}</p>
             <p>Room - {{application.room_id.title}}</p>
+            <p>Status - {{application.get_approve_status_display}}</p>
             <a href="{% url 'delete_application' application.id %}" class="btn btn-primary">Отменить</a>
         </div>
         {% endfor %}

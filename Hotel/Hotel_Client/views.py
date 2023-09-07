@@ -115,3 +115,4 @@ def delete_application(request, pk):
     application = RoomApplication.objects.get(pk=pk)
     application.delete()
     return redirect('rooms')
+
